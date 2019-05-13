@@ -40,3 +40,8 @@ Define what games you are looking for
 - Clone Repository
 - run ``npm install`` from terminal
 - run ``npm start`` from terminal
+
+## Running tests
+- You must have geckodriver installed and running
+  - follow the "download geckodriver" section in [this link](https://webdriver.io/docs/gettingstarted.html#download-geckodriver)
+- from the project root in the command line (windows) run `"node_modules/.bin/wdio.cmd" wdio.conf.js`
