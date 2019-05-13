@@ -1,0 +1,30 @@
+{
+  "name": "overpug",
+  "version": "1.0.0",
+  "description": "Pick Up Game System for Overwatch",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "gulp serve --require @babel/register --gulpfile tasks",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react_bundle": "gulp bundle --require @babel/register --gulpfile tasks",
+    "build": "gulp build --require @babel/register --gulpfile tasks"
+  },
+  "author": "Marc Vousden",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "redux": "^4.0.1",
+    "redux-promise": "^0.6.0",
+    "sass": "^1.20.1",
+    "webpack": "^4.31.0",
+    "webpack-dev-middleware": "^3.6.2"
+  }
+}
