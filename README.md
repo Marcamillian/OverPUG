@@ -29,6 +29,9 @@ Define what games you are looking for
 ![Screenshot of PUG Subscribe Screen](docs/images/SubPUG.png)
 
 # Change Log
+  - [2019-05-13] Initial Framework setup
+
+# Usage
 
 ## Environment Requirements
 - Nodejs / npm
