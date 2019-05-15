@@ -4,9 +4,12 @@
 
 import assert from 'assert';
 import React from 'react';
-import enzyme from 'enzyme';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import Basic from '../../src/react/components/basic';
+Enzyme.configure({ adapter: new Adapter() });
+
+//import Basic from '../../src/react/components/basic';
 
 describe('Array', function(){
   describe('indexOf()', function(){

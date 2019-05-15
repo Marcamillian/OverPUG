@@ -1,4 +1,6 @@
 import { parallel, src, dest } from 'gulp';
+import sass from 'gulp-sass';
+
 
 function build_markup(){
   return src('src/html/**/*.html')
@@ -6,7 +8,8 @@ function build_markup(){
 }
 
 function build_styles(){
-  return src('src/styles/**/*.css')
+  return src('src/styles/**/*.scss')
+  .pipe( sass().on('error', sass.logError ) )
   .pipe( dest('dist/css') )
 }
 

@@ -22,6 +22,6 @@ export function serve(){
 
   browser.init( config );
 
-  watch(['./src/**/.html','./src/**/.css','./src/**/.js' ], build_all );
+  watch(['./src/**/*.html','./src/**/*.scss','./src/**/*.js' ], build_all );
 
 }

@@ -21,6 +21,7 @@
     "babel-register": "^6.26.0",
     "browser-sync": "^2.26.5",
     "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "redux": "^4.0.1",
@@ -35,6 +36,7 @@
     "@wdio/mocha-framework": "^5.8.1",
     "@wdio/sync": "^5.8.1",
     "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
     "tap": "^13.1.8",
     "webdriverio": "^5.8.3"
   }
