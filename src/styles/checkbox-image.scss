@@ -1,0 +1,14 @@
+
+.checkbox-image{
+  input[type="checkbox"]{
+    display:none;
+  }
+
+  input[type="checkbox"]+label{
+    opacity: 0.2;
+  }
+
+  input[type="checkbox"]:checked+label{
+    opacity: 1;
+  }
+}

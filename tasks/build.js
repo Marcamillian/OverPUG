@@ -8,11 +8,16 @@ function build_markup(){
 }
 
 function build_styles(){
-  return src('src/styles/**/*.scss')
+  return src('src/styles/**/main.scss')
   .pipe( sass().on('error', sass.logError ) )
   .pipe( dest('dist/css') )
 }
 
-let build_all = parallel( build_markup, build_styles );
+function build_component_images(){
+  return (src('src/images/components/**/*.png'))
+  .pipe( dest('dist/img'))
+}
+
+let build_all = parallel( build_markup, build_styles, build_component_images );
 
 module.exports = { build_all, build_markup, build_styles }

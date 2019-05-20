@@ -1,0 +1,19 @@
+.ow-button{
+  color:$main-text;
+  background-color: $button-color;
+  padding:0.5em 1.5em;
+  border:none;
+  font-weight: bold;
+  font-size: 1em;
+
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.ow-button.accent{
+  background-color: $button-color-accent;
+}
+

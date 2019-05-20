@@ -6,35 +6,10 @@ html{
   background-color: $bg-color;
 }
 
-.ow-button{
-  color:$main-text;
-  background-color: $button-color;
-  padding:0.5em 1.5em;
-  border:none;
-  font-weight: bold;
-  font-size: 1em;
-}
+@import "./ow-button.scss";
+@import "./ow-team-slot.scss";
+@import "./ow-text-input.scss";
+@import "./ow-label.scss";
+@import "./checkbox-image.scss";
+@import "./ow-role-select.scss";
 
-.ow-button.accent{
-  background-color: $button-color-accent;
-}
-
-.ow-team-slot{
-  background-color: #030B1188;
-  color:$main-text;
-  padding:0.25em;
-
-  border-right:7px solid white;
-
-  p{
-    padding:0px;
-    margin:0px;
-    text-align:center;
-  }
-}
-.ow-team-slot.red{
-  border-color: $team-color-red;
-}
-.ow-team-slot.blue{
-  border-color: $team-color-blue;
-}

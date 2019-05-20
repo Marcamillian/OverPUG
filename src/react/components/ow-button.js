@@ -5,7 +5,8 @@ class OwButton extends Component{
 
     let buttonText = this.props.buttonText.toUpperCase();
     let clickCallback = this.props.clickCallback ? this.props.clickCallback : ()=>{console.log("something")}; 
-    
+    // TODO: add left/right attribute for border side
+
     let classList = "ow-button";
     if(this.props.accent){
       classList += " accent";
@@ -15,8 +16,9 @@ class OwButton extends Component{
       <button
         className={classList}
         onClick={ clickCallback } >
-        <div>{ buttonText } </div>
+        { buttonText } 
       </button>
+
     )
   }
 }
