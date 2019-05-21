@@ -2,24 +2,27 @@ import React, { Component } from 'react';
 
 import OwLabel from './ow-label';
 
-class OwTextInput extends Component{
+class OwInput extends Component{
   render(){
-    let labelName = this.props.labelName;
-
-    let labelText = labelName.toUpperCase();
-    let idString = labelName
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-      .join('_');
-
-    let formName = this.props.formName;
+    let labelText = this.props.labelName.toUpperCase();
+    let value = this.props.value;
+    let onChange = this.props.onChange;
+    let type = this.props.type;
 
     return(
       <div className="ow-text-input">
-        <OwLabel labelName={ labelText } forString={ idString } />
-        <input id={ idString } type="text" name={formName} ></input>
+        <OwLabel
+          labelName={ labelText }
+        />
+
+        <input
+          type={ type }
+          value={ value }
+          onChange={onChange}
+        /> 
       </div>
     )
   }
 }
 
-export default OwTextInput;
+export default OwInput;

@@ -5,32 +5,57 @@ class CheckboxImage extends Component{
   render(){
 
     let imagePath = this.props.image_path;
-    let formName = this.props.form_name;
+    let optionType = this.props.option_type;
     let value = this.props.value;
     let isChecked = this.props.is_checked;
-    let onChange = ()=>{ console.log("changin thing")}
+    let onChange = this.props.on_change;
 
-    let idString = `${formName}_${value}`;
+    let idString = `${optionType}_${value}`;
 
     return(
       <div className="checkbox-image">
         <input
           ref="checkbox"
           type="checkbox"
-          id={ idString }
-          name={formName}
           value={value}
+          id={ idString }
+          checked = {isChecked}
+          
           role="option"
           aria-label={value}
-          checked = {isChecked}
           aria-selected={ isChecked }
-          onChange={ onChange }/>
-        <label htmlFor={ idString }>
-          <img src={ imagePath }></img>
+
+          onChange = { onChange }
+        />
+        <label ref="focus" htmlFor={ idString } >
+          <img  src={ imagePath }></img>
         </label>
       </div>
     )
   }
+
+  setFocus(){
+    let element = this.refs['focus'];
+
+    element.setAttribute('tabindex', 0);
+    element.focus();
+  }
+
+  removeFocus(){
+    let element = this.refs['focus'];
+    element.removeAttribute('tabindex');
+  }
+
+  toggleChecked(){
+    let element = this.refs['checkbox'];
+    element.click();
+  }
+
+  getValue(){
+    let element = this.refs['checkbox'];
+    return element.value;
+  }
+
 
 }
 

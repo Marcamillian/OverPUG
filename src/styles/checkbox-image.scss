@@ -4,11 +4,20 @@
     display:none;
   }
 
+  label{
+    display:block;
+  }
+
   input[type="checkbox"]+label{
-    opacity: 0.2;
+    img{
+      opacity: 0.2;
+    }
   }
 
   input[type="checkbox"]:checked+label{
-    opacity: 1;
+    img{
+      opacity: 1;
+    }
   }
+
 }
