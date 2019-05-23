@@ -27,7 +27,10 @@ class CheckboxImage extends Component{
 
           onChange = { onChange }
         />
-        <label ref="focus" htmlFor={ idString } >
+        <label
+          ref="focus"
+          htmlFor={ idString }
+          aria-label={ value }>
           <img  src={ imagePath }></img>
         </label>
       </div>

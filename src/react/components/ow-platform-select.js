@@ -17,18 +17,27 @@ class OwPlatformSelect extends Component{
   render(){
 
     let platforms = this.props.platforms_selected;
+    let optionType="platform"
+
+    let ownsString = ["pc", "ps4", "xbox"].reduce((counter, value)=>{
+      return `${counter}${optionType}_${value} `;
+    }, "");
 
     return(
       <div
         ref="select-container"
         className="ow-platform-select"
-        tabIndex="0"
-        onFocus={this.handleFocus.bind(this)}
+        onFocus={ this.handleFocus.bind(this) }
         onKeyDown={ this.handleKeyEvent.bind(this) }>
 
         <OwLabel labelName="Platform" />
 
-        <div className="platform-list">
+        <div
+          className="platform-list"
+          role="listbox"
+          tabIndex="0"
+          aria-label="Platform"
+          aria-owns={ ownsString }>
 
           <CheckboxImage
             option_type="platform"

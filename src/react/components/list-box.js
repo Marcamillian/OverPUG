@@ -1,103 +1,148 @@
 import React, { Component } from 'react';
-import { timingSafeEqual } from 'crypto';
 
 class ListBox extends Component{
-  
-  render(){
 
-    let multiSelect = this.props.multi_select;
+  constructor(props){
+    super(props);
+
+    this.state = {
+      focusedIndex: 0,
+      optionElements:[],
+      optionData: props.optionData
+    }
+
+  }
+
+  render(){
+    
+    let optionData = this.state.optionData;
 
     return(
-      <div className="list-box"
-            tabIndex="0"
-            role="listbox"
-            aria-multiselectable={multiSelect}
-            ref="listbox">
-        {this.props.children}
+      <div
+        className="list-box"
+        role="listbox"
+        aria-label="some options"
+        aria-multiselectable="true"
+        aria-orientation="horizontal"
+        tabIndex="0"
+        onKeyDown={ this.handleKeyEvent.bind(this) }
+      >
+        { optionData.map(this.renderOption) }
       </div>
     )
+  }
+
+  renderOption(optionObject){
+    return(
+      <input
+        ref= { optionObject.ref }
+        key= { optionObject.value }
+        type="checkbox"
+        value= { optionObject.value }
+        aria-label={ optionObject.value }
+        role="option"
+        aria-selected="false"
+        tabIndex="-1"
+      />
+    )
+  }
+
+  handleFocus( event ){
+    let element = this.refs["select-container"];
+
+    if( event.target == element ){
+      //this.state.options[ this.state.focusedIndex ].setFocus();
+    }
 
   }
 
-  componentDidMount(){
-    let container = this.refs.listbox;
-    this.options = container.querySelectorAll('input');
-    this.focusedIndex = 0;
-    this.focusedItem = this.options[this.focusedIndex];
+  handleKeyEvent( event ){
 
-    container.addEventListener('focus', this.initFocus.bind(this))
-    container.addEventListener('keydown', this.keyHander.bind(this));
+    let element = this.state.optionElements[ this.state.focusedIndex ];
 
-  }
-
-  keyHander(event){
-    event.preventDefault();
-    switch(event.keyCode){
+    switch( event.keyCode ){
       case 9: // tab
-        // carry on to next element
+        // remove focus/tabIndex on the internal option 
+        this.removeFocus( element );
       break;
       case 32: // space
-        // update the element
+        // change the checked status of the input - picked up in state bu onChange handler
         event.preventDefault();
-        this.toggleOption(event.target);
+        this.toggleChecked( element );
       break;
       case 39: // right
-        event.preventDefault();
-        if(this.focusedIndex < this.options.length-1){
-          this.focusedIndex ++;
+        var index = this.state.focusedIndex;
+        var options = this.state.optionElements;
+        var newIndex;
+
+        if( index >= options.length-1 ){
+          newIndex = 0;
         }else{
-          this.focusedIndex = 0;
+          newIndex = index + 1;
         }
-        this.changeFocus(this.focusedIndex)
+        
+        this.removeFocus( element ); // remove focuse/tabIndex from old option
+        this.giveFocus( options[newIndex] ) // add focuse/tabIndex to new option
+
+        this.setState( prevState => ({ focusedIndex: newIndex })) // update state with new index
+
       break;
       case 37: // left
-        event.preventDefault();
-        if(this.focusedIndex > 0){
-          this.focusedIndex --;
+        var index = this.state.focusedIndex;
+        var options = this.state.optionElements;
+        var newIndex;
+
+        if( index <= 0){
+          newIndex = options.length -1;
         }else{
-          this.focusedIndex = this.options.length-1;
+          newIndex = index -1;
         }
-        this.changeFocus(this.focusedIndex);
+
+        this.removeFocus( element );
+        this.giveFocus( options[newIndex] );
+
+        this.setState( prevState => ({ focusedIndex: newIndex }));
+
       break;
       default:
         console.log(event.keyCode)
       break;
+
     }
   }
 
-  toggleOption(DOMElement){
-    let checked = DOMElement.checked;
-    DOMElement.setAttribute('checked', !checked)
-    DOMElement.setAttribute('aria-selected', !checked)
-    console.log(DOMElement)
+  handleOnChange( event ){
+    this.props.update_platform( event );
   }
 
-  initFocus(){
-    this.changeFocus(this.focusedIndex);
+  giveFocus( optionElement ){
+    optionElement.setAttribute("tabIndex", "0");
+    optionElement.focus();
   }
-
-  changeFocus(index){
-    console.log("soimething")
-    // deal with existing focused item
-    this.focusedItem.tabIndex = -1;
-
-    // set up the newly focused item
-    this.focusedItem = this.options[index];
-    this.focusedItem.tabIndex = 0;
-    this.focusedItem.focus();
+  removeFocus( optionElement ){
+    optionElement.setAttribute("tabIndex", "-1");
   }
-
-  toggleOption( element ){
-
-    let checked = element.checked;
-
-    if(checked){
-      this.focusedItem.removeAttribute('checked');
-      this.focusedItem.setAttribute('aria-selected', false)
+  toggleChecked( optionElement ){
+    let newValue = !optionElement.checked;
+    if( newValue == true ){
+      optionElement.setAttribute("aria-selected", "true")
+      optionElement.checked = true;
     }else{
-      this.focusedItem.setAttribute('checked', 'checked');
-      this.focusedItem.setAttribute('aria-selected', true)
+      optionElement.setAttribute("aria-selected", "false")
+      optionElement.checked = false;
     }
+  }
+
+  // OVERRIDE THIS
+  componentDidMount(){
+    
+    let optionElements = this.state.optionData.map( ({ ref }) =>{
+      return this.refs[ ref ];
+    })
+    
+
+    this.setState( prevState =>({ optionElements })) 
+
   }
 
 }
