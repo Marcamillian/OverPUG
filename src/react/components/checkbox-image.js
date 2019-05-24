@@ -10,15 +10,14 @@ class CheckboxImage extends Component{
     let isChecked = this.props.is_checked;
     let onChange = this.props.on_change;
 
-    let idString = `${optionType}_${value}`;
+    let idString = this.props.id;
 
     return(
-      <div className="checkbox-image">
+      <div className="checkbox-image" >
         <input
           ref="checkbox"
           type="checkbox"
           value={value}
-          id={ idString }
           checked = {isChecked}
           
           role="option"
@@ -29,8 +28,10 @@ class CheckboxImage extends Component{
         />
         <label
           ref="focus"
+          id={ idString }
           htmlFor={ idString }
-          aria-label={ value }>
+          aria-label={ value }
+          aria-selected={ isChecked }>
           <img  src={ imagePath }></img>
         </label>
       </div>

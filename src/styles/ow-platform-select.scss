@@ -1,20 +1,22 @@
 .ow-platform-select{
+  margin:2em;
+  .icon-listbox{
+    display:flex;
+    flex-direction: horizontal;
+    flex-wrap: flex;
+    justify-content: space-around;
 
-  .platform-list{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    flex-wrap: wrap;
-  }
-
-  .checkbox-image{
-
-    padding: 1em;
-
-    img{
-      height: 75px;
-      width: 75px;
+    .checkbox-image{
+      label{
+        display:block;
+        position:relative;
+        height:75px;
+        width: 75px;
+        img{
+          height:100%;
+          width:100%;
+        }
+      }
     }
   }
 }

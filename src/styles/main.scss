@@ -13,3 +13,11 @@ html{
 @import "./checkbox-image.scss";
 @import "./ow-role-select.scss";
 @import "./ow-platform-select.scss";
+
+
+.item-listbox{
+  img{
+    height:75px;
+    width: 75px;
+  }
+}

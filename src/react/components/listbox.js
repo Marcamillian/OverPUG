@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ListBox extends Component{
+class Listbox extends Component{
 
   constructor(props){
     super(props);
@@ -8,7 +8,7 @@ class ListBox extends Component{
     this.state = {
       focusedIndex: 0,
       optionElements:[],
-      optionData: props.optionData
+      optionData: this.props.option_data
     }
 
   }
@@ -16,12 +16,13 @@ class ListBox extends Component{
   render(){
     
     let optionData = this.state.optionData;
+    let ariaLabel = this.props.aria_label;
 
     return(
       <div
-        className="list-box"
+        className="listbox"
         role="listbox"
-        aria-label="some options"
+        aria-label={ ariaLabel }
         aria-multiselectable="true"
         aria-orientation="horizontal"
         tabIndex="0"
@@ -147,4 +148,4 @@ class ListBox extends Component{
 
 }
 
-export default ListBox;
+export default Listbox;
