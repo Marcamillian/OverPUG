@@ -24,6 +24,7 @@ function updateValue( event ){
 
 ReactDOM.render(
   <div>
+    <Listbox aria_label="select platform" update_platform={console.log} option_data={ optionData }/>
     <OwGameForm />
    </div>
 , document.querySelector('.react-container'));

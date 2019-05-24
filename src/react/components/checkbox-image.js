@@ -38,6 +38,11 @@ class CheckboxImage extends Component{
     )
   }
 
+  setTabIndex(){
+    let element = this.refs['focus'];
+    element.setAttribute('tabindex','0')
+  }
+
   setFocus(){
     let element = this.refs['focus'];
 

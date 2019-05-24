@@ -25,7 +25,6 @@ class Listbox extends Component{
         aria-label={ ariaLabel }
         aria-multiselectable="true"
         aria-orientation="horizontal"
-        tabIndex="0"
         onKeyDown={ this.handleKeyEvent.bind(this) }
       >
         { optionData.map(this.renderOption) }
@@ -64,7 +63,6 @@ class Listbox extends Component{
     switch( event.keyCode ){
       case 9: // tab
         // remove focus/tabIndex on the internal option 
-        this.removeFocus( element );
       break;
       case 32: // space
         // change the checked status of the input - picked up in state bu onChange handler
@@ -116,6 +114,10 @@ class Listbox extends Component{
     this.props.update_platform( event );
   }
 
+  setTabindex( optionElement ){
+    optionElement.setAttribute("tabIndex", "0");
+  }
+
   giveFocus( optionElement ){
     optionElement.setAttribute("tabIndex", "0");
     optionElement.focus();
@@ -141,8 +143,9 @@ class Listbox extends Component{
       return this.refs[ ref ];
     })
     
+    this.giveFocus(optionElements[this.state.focusedIndex]);
 
-    this.setState( prevState =>({ optionElements })) 
+    this.setState( prevState =>({ optionElements }))
 
   }
 

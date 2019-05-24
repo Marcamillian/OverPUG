@@ -21,7 +21,6 @@ class IconListBox extends ListBox{
         aria-multiselectable="true"
         aria-orientation="horizontal"
         aria-owns={ ownsString }
-        tabIndex="0"
         onKeyDown={ this.handleKeyEvent.bind(this)}
       >
         { optionData.map(this.renderOption.bind(this)) }
@@ -49,6 +48,10 @@ class IconListBox extends ListBox{
 
   handleOnChange( event ){
     this.props.update_value( event );
+  }
+
+  setTabIndex( optionElement ){
+    optionElement.setTabIndex()
   }
 
   giveFocus( optionElement ){

@@ -33,7 +33,7 @@ class OwPlatformSelect extends Component{
     let optionData = this.generateOptionData();
 
     return(
-      <div class="ow-platform-select">
+      <div className="ow-platform-select">
         <OwLabel labelName="Platform" />
         <IconListbox
           aria_label="platform select"
