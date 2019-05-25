@@ -29,17 +29,18 @@ class OwPlatformSelect extends Component{
   }
   
   render(){
-    let platforms = this.props.platforms_selected;
     let optionData = this.generateOptionData();
+    let idString = "label_platform_select"
 
     return(
       <div className="ow-platform-select">
-        <OwLabel labelName="Platform" />
+        <OwLabel labelName="Platform" idString= { idString }/>
         <IconListbox
           aria_label="platform select"
           update_value={ this.props.update_platform }
           option_type="platform"
           option_data={ optionData }
+          labelled_by={ idString }
         />
       </div>
     )

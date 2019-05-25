@@ -12,6 +12,7 @@ class IconListBox extends ListBox{
     let ownsString = optionData.reduce((builtString, optionData )=>{
       return `${builtString}${optionData.id} `;
     }, "");
+    let idString = this.props.labeled_by;
 
     return (
       <div 
@@ -30,7 +31,8 @@ class IconListBox extends ListBox{
 
   renderOption(optionObject){
     
-    let idString = `${this.props.option_type}_${optionObject.value}`
+    let idString = `${this.props.option_type}_${optionObject.value}`;
+    let labeledBy = this.props.labelled_by;
 
     return(
       <CheckboxImage
@@ -42,6 +44,7 @@ class IconListBox extends ListBox{
         on_change={ this.handleOnChange.bind(this) }
         ref={optionObject.ref}
         is_checked = { optionObject.isChecked }
+        labelled_by = {  labeledBy }
       />
     )
   }

@@ -50,10 +50,7 @@ class OwGameForm extends Component{
     return(
       <div className="ow-game-form">
         <form onSubmit={this.handleFormSubmit.bind(this)}>
-          <OwPlatformSelect
-            platforms_selected={ this.state.gameData.platforms }
-            update_platform={ this.handlePlatformSelect.bind(this) }
-          />
+          
 
           <OwInput
             labelName="Custom Game Name"
@@ -75,6 +72,12 @@ class OwGameForm extends Component{
             value={ gameData.startTime }
             onChange={ this.handleStartTime.bind(this)}
           />
+
+          <OwPlatformSelect
+            platforms_selected={ this.state.gameData.platforms }
+            update_platform={ this.handlePlatformSelect.bind(this) }
+          />
+
           <OwButton buttonText="create" />
         </form>
         

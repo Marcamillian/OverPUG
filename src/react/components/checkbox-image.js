@@ -10,6 +10,8 @@ class CheckboxImage extends Component{
     let isChecked = this.props.is_checked;
     let onChange = this.props.on_change;
 
+
+    let labeledBy = this.props.labelled_by;
     let idString = this.props.id;
 
     return(
@@ -19,10 +21,12 @@ class CheckboxImage extends Component{
           type="checkbox"
           value={value}
           checked = {isChecked}
-          
+          tabIndex="0"
+
           role="option"
           aria-label={value}
           aria-selected={ isChecked }
+          aria-labelledby= { labeledBy }
 
           onChange = { onChange }
         />
@@ -39,12 +43,12 @@ class CheckboxImage extends Component{
   }
 
   setTabIndex(){
-    let element = this.refs['focus'];
+    let element = this.refs['checkbox'];
     element.setAttribute('tabindex','0')
   }
 
   setFocus(){
-    let element = this.refs['focus'];
+    let element = this.refs['checkbox'];
 
     element.setAttribute('tabindex', 0);
     element.focus();
