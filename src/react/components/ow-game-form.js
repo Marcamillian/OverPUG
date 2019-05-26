@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import OwInput from './ow-text-input';
 import OwButton from './ow-button';
 import OwPlatformSelect from './ow-platform-select';
-
+import OwRankSelect from './ow-rank-select';
 
 class OwGameForm extends Component{
   
@@ -19,11 +19,11 @@ class OwGameForm extends Component{
         startTime: Date.now(),
         gameName: "My Game",
         gamePassword: "password",
-        skillLevel:{
+        ranks:{
           bronze: false,
           silver:false,
           gold:true,
-          plat:true,
+          platinum:true,
           diamond:false, 
           master: false,
           grandmaster: false,
@@ -75,6 +75,12 @@ class OwGameForm extends Component{
             value={ gameData.startTime }
             onChange={ this.handleStartTime.bind(this)}
           />
+
+          <OwRankSelect
+            ranks_selected={ this.state.gameData.ranks }
+            update_rank = { this.handleRankSelect.bind(this) }
+          />
+
           <OwButton buttonText="create" />
         </form>
         
@@ -99,6 +105,22 @@ class OwGameForm extends Component{
     }))
     
     
+  }
+
+  handleRankSelect( event ){
+    let rankTarget = event.target.value;
+
+    let ranksCopy = {...this.state.gameData.ranks};
+    let newValue = !ranksCopy[rankTarget];
+
+    ranksCopy[rankTarget] = newValue;
+
+    this.setState( prevState =>({
+      gameData:{
+        ...prevState.gameData,
+        ranks: ranksCopy
+      }
+    }))
   }
 
   handleGameName(event){

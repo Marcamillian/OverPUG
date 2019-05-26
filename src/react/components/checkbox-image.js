@@ -31,7 +31,8 @@ class CheckboxImage extends Component{
           id={ idString }
           htmlFor={ idString }
           aria-label={ value }
-          aria-selected={ isChecked }>
+          aria-selected={ isChecked }
+          onClick={ this.toggleChecked.bind(this) }>
           <img  src={ imagePath }></img>
         </label>
       </div>

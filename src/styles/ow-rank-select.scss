@@ -1,0 +1,21 @@
+.ow-rank-select{
+  .icon-listbox{
+    display:flex;
+    flex-direction: horizontal;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .checkbox-image{
+      width:25%;
+      label{
+        display:block;
+        position:relative;
+      }
+      img{
+        margin:auto;
+        display:block;
+        width:75px;
+      }
+    }
+  }
+}
