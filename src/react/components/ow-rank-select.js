@@ -52,7 +52,6 @@ class OwRankSelect extends Component{
   }
 
   render(){
-    let platforms = this.props.ranks_selected;
     let optionData = this.generateOptionData();
 
     return(

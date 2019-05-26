@@ -6,6 +6,7 @@ import OwInput from './ow-text-input';
 import OwButton from './ow-button';
 import OwPlatformSelect from './ow-platform-select';
 import OwRankSelect from './ow-rank-select';
+import OwRegionSelect from './ow-region-select';
 
 class OwGameForm extends Component{
   
@@ -15,7 +16,7 @@ class OwGameForm extends Component{
     this.state = {
       gameData: {
         platforms:{pc:true, ps4: false, xbox: false},
-        region:{na: false, eu: true, apac: false},
+        regions:{na: false, eu: true, apac: false},
         startTime: Date.now(),
         gameName: "My Game",
         gamePassword: "password",
@@ -53,6 +54,11 @@ class OwGameForm extends Component{
           <OwPlatformSelect
             platforms_selected={ this.state.gameData.platforms }
             update_platform={ this.handlePlatformSelect.bind(this) }
+          />
+
+          <OwRegionSelect
+            regions_selected={ this.state.gameData.regions}
+            update_regions={ this.handleRegionSelect.bind(this)}
           />
 
           <OwInput
@@ -105,6 +111,23 @@ class OwGameForm extends Component{
     }))
     
     
+  }
+
+  handleRegionSelect( event ){
+
+    let regionTarget = event.target.value;
+    let regionsCopy = {...this.state.gameData.regions};
+    let newValue = !regionsCopy[regionTarget];
+
+    regionsCopy[regionTarget] = newValue;
+
+    this.setState( prevState =>({
+      gameData:{
+        ...prevState.gameData,
+        regions: regionsCopy
+      }
+    }));
+
   }
 
   handleRankSelect( event ){
