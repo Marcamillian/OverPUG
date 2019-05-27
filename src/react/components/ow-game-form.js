@@ -87,7 +87,7 @@ class OwGameForm extends Component{
             update_rank = { this.handleRankSelect.bind(this) }
           />
 
-          <OwButton buttonText="create" />
+          <OwButton buttonText="create" accent="true" />
         </form>
         
       </div>
