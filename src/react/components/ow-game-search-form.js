@@ -6,6 +6,7 @@ import OwRegionSelect from './ow-region-select';
 import OwPlatformSelect from './ow-platform-select';
 import OwRankSelect from './ow-rank-select';
 import OwRoleSelect from './ow-role-select';
+import OwTimeSelect from './ow-time-select';
 
 class OwGameSearchForm extends Component{
   
@@ -92,7 +93,7 @@ class OwGameSearchForm extends Component{
             update_regions= { this.handleRegionSelect.bind(this) }
           />
           
-          <h1> Time Select </h1>
+          <OwTimeSelect />
 
           <OwRankSelect
             ranks_selected= { this.state.gameData.ranks }
