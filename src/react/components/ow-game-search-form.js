@@ -5,6 +5,7 @@ import OwTextInput from './ow-text-input';
 import OwRegionSelect from './ow-region-select';
 import OwPlatformSelect from './ow-platform-select';
 import OwRankSelect from './ow-rank-select';
+import OwRoleSelect from './ow-role-select';
 
 class OwGameSearchForm extends Component{
   
@@ -49,7 +50,7 @@ class OwGameSearchForm extends Component{
           support_main: true,
           support_off: false,
           dps: false,
-          felx: false
+          flex: false
         }
       }
     }
@@ -98,7 +99,10 @@ class OwGameSearchForm extends Component{
             update_rank = { this.handleRankSelect.bind(this) }
           />
 
-          <h1> Role Select </h1>
+          <OwRoleSelect
+            roles_selected ={ this.state.gameData.roles }
+            update_roles = { this.handleRoleSelect.bind(this) }
+          />
 
          <OwButton buttonText="Search Games" accent="true"/>
         </form>
@@ -163,6 +167,21 @@ class OwGameSearchForm extends Component{
         regions: regionsCopy
       }
     }));  
+  }
+
+  handleRoleSelect( event ){
+    let roleTarget = event.target.value;
+    let rolesCopy = {...this.state.gameData.roles}
+    let newValue = !rolesCopy[roleTarget];
+
+    rolesCopy[roleTarget] = newValue;
+
+    this.setState( prevState =>({
+      gameData:{
+        ...prevState.gameData,
+        roles: rolesCopy
+      }
+    }))
   }
 
   handleFormSubmit( event ){

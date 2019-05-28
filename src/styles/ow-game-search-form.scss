@@ -1,0 +1,18 @@
+.ow-game-search-form{
+  .ow-role-select{
+    .icon-listbox{
+      display:flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      justify-content:center;
+      .checkbox-image{
+        width:30%;
+        img{
+          padding:1em;
+          display:block;
+          margin:auto;
+        } 
+      }
+    }
+  }
+}
