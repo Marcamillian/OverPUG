@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 import OwGameForm from './components/ow-game-form';
+import OwGameSearchForm from './components/ow-game-search-form';
 import HomePage from './components/home-page';
 
 function updateValue( event ){
@@ -14,7 +15,8 @@ ReactDOM.render(
   <BrowserRouter>
     
      <Switch>
-       <Route path="/game" component={ OwGameForm } />
+       <Route path="/create" component={ OwGameForm } />
+       <Route path="/search" component={ OwGameSearchForm } />
        <Route path="/" component={ HomePage } />
      </Switch>
    
