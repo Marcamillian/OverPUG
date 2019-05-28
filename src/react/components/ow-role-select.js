@@ -48,6 +48,7 @@ class OwRoleSelect extends Component{
     return(
       <div className="ow-role-select">
         <OwLabel labelName="Role" />
+        <hr />
         <IconListbox
           aria-label="Role Select"
           update_value= {this.props.update_roles }

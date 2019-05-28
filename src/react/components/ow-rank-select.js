@@ -57,6 +57,7 @@ class OwRankSelect extends Component{
     return(
       <div className="ow-rank-select">
         <OwLabel labelName="Rank" />
+        <hr />
         <IconListbox
           aria_label="Rank Select"
           update_value={ this.props.update_rank }

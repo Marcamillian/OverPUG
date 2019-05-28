@@ -34,6 +34,7 @@ class OwRegionSelect extends Component{
     return(
       <div className="ow-region-select">
         <OwLabel labelName="Region" />
+        
         <IconListbox
           aria_label="Region Select"
           update_value={ this.props.update_regions }

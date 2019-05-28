@@ -35,6 +35,7 @@ class OwPlatformSelect extends Component{
     return(
       <div className="ow-platform-select">
         <OwLabel labelName="Platform" />
+        
         <IconListbox
           aria_label="platform select"
           update_value={ this.props.update_platform }
