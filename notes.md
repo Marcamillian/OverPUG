@@ -1,4 +1,12 @@
 # TODO
+
+## Add router
+- [ ] Add react router
+
+## Build game alert screen
+- [ ] Role Select component
+- [ ] Date/time select
+
 ### Components
 - [ ] Make Role select an ARIA compliant [listbox](https://www.w3.org/TR/wai-aria-practices/#Listbox)
   - Roles
@@ -14,3 +22,4 @@
 ### General 
 - [x] Get scaffold working for react/webpack/gulp
 
+ 

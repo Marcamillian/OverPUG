@@ -17,7 +17,8 @@ export function serve(){
     open: false,
     middleware:[
       webpackDevMiddleware( bundler, {})
-    ]
+    ],
+    single: "index.html"
   }
 
   browser.init( config );

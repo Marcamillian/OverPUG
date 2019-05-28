@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 import OwGameForm from './components/ow-game-form';
-
+import HomePage from './components/home-page';
 
 function updateValue( event ){
   console.log(`update icon option ${event.target.value}`)
 }
 
 ReactDOM.render(
-  <div>
-    <OwGameForm />
-   </div>
+  <BrowserRouter>
+    
+     <Switch>
+       <Route path="/game" component={ OwGameForm } />
+       <Route path="/" component={ HomePage } />
+     </Switch>
+   
+  </BrowserRouter>
+  
 , document.querySelector('.react-container'));
 
 /*
