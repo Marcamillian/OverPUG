@@ -32,18 +32,37 @@ class OwGameSearchForm extends Component{
         times:{
           now: false,
           schedule:{
-            mon:[
-              {start: "9:00", end:"10:00"}
-            ],
-            tue:[],
-            wed:[],
-            thur:[],
-            fri:[],
-            sat:[],
-            sun:[],
-          },
-          
-
+            mon:{
+              active:true,
+              times:[
+                {start: "9:00", end:"10:00"}
+              ]
+            },
+            tue:{
+              active:false,
+              times:[]
+            },
+            wed:{
+              active:false,
+              times:[]
+            },
+            thu:{
+              active:false,
+              times:[]
+            },
+            fri:{
+              active:false,
+              times:[]
+            },
+            sat:{
+              active:true,
+              times:[]
+            },
+            sun:{
+              active:false,
+              times:[]
+            },
+          }
         },
         roles:{
           tank_main: true,
@@ -67,7 +86,7 @@ class OwGameSearchForm extends Component{
       ow-region-select
       [ ] ow-time select
       ow-rank-select
-      [ ] ow-role-select
+      ow-role-select
       ow-button  
     */
 
@@ -93,7 +112,11 @@ class OwGameSearchForm extends Component{
             update_regions= { this.handleRegionSelect.bind(this) }
           />
           
-          <OwTimeSelect />
+          <OwTimeSelect
+            now={ this.state.gameData.times.now }
+            schedule={ this.state.gameData.times.schedule }
+            time_toggle={ this.handleScheduleDayToggle.bind(this) }
+          />
 
           <OwRankSelect
             ranks_selected= { this.state.gameData.ranks }
@@ -168,6 +191,31 @@ class OwGameSearchForm extends Component{
         regions: regionsCopy
       }
     }));  
+  }
+
+  handleScheduleDayToggle( event ){
+    let dayToggle = event.target.value;
+    let scheduleCopy = {...this.state.gameData.times.schedule};
+    let scheduleDayCopy = scheduleCopy[dayToggle];
+    let newValue = !scheduleDayCopy.active;
+    
+    scheduleDayCopy.active = newValue;
+    scheduleCopy[dayToggle] = scheduleDayCopy;
+    
+   
+
+    this.setState( prevState=>({
+      gameData:{
+        ...prevState.gameData,
+        times:{
+          ...prevState.gameData.times,
+          schedule: scheduleCopy
+        }
+      }
+    }) )
+
+    console.log(this.state)
+
   }
 
   handleRoleSelect( event ){

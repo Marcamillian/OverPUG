@@ -64,8 +64,7 @@ class OwRoleSelect extends Component{
     let roleNames= Object.keys( rolesSelected );
 
     return roleNames.map( roleName =>{
-      console.log(roleName);
-      console.log(roleNames)
+
       let optionAttr = this.optionAttributes[roleName];
 
       return{

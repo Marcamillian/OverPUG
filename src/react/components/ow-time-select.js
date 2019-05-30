@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import OwLabel from './ow-label';
 import OwButton from './ow-button';
+import CheckboxText from './checkbox-text';
 
 class OwTimeSelect extends Component{
   render(){
@@ -13,9 +14,29 @@ class OwTimeSelect extends Component{
           <OwButton buttonText="schedule" />
           <OwButton buttonText="now" />
         </div>
-
+        <div>
+          { this.generateDayBlocks() }
+        </div>
       </div>
     )
+  }
+
+  generateDayBlocks(){
+    let schedule = this.props.schedule;
+    let dayNames = Object.keys(schedule);
+
+    return dayNames.map( dayName =>{
+
+      return(
+        <CheckboxText
+          key={`schedule_${dayName}`}
+          checkbox_text={dayName}
+          is_checked={schedule[dayName].active }
+          on_change= {this.props.time_toggle}
+        />
+      )
+    })
+    
   }
 }
 

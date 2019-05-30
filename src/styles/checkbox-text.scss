@@ -1,0 +1,19 @@
+.checkbox-text{
+  display:inline-block;
+  
+  .date-block{
+    margin:1em;
+    height:3em;
+    width:3em;
+    text-align:center;
+    background-color: $button-color;
+    color:$main-text;
+    opacity:0.2;
+  }
+  .date-block.checked{
+    opacity:1 ;
+  }
+  input[type="checkbox"]{
+    display:none;
+  }
+}
