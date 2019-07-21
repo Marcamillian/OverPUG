@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import OwLabel from './ow-label';
 import OwButton from './ow-button';
 import CheckboxText from './checkbox-text';
+import InputDoubleSlider from './input-double-slider';
+
 
 class OwTimeSelect extends Component{
   render(){
@@ -17,6 +19,8 @@ class OwTimeSelect extends Component{
         <div>
           { this.generateDayBlocks() }
         </div>
+
+        <InputDoubleSlider />
       </div>
     )
   }

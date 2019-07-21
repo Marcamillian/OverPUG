@@ -1,0 +1,14 @@
+.input-double-slider{
+  position:relative;
+  height:75px;
+  padding:1em 0em;
+  
+  svg{
+    position:absolute;
+  }
+
+  .track .track-groove{
+    stroke:$bg-color3;
+    stroke-linecap: round;
+  }
+}
