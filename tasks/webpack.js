@@ -17,7 +17,8 @@ let config = {
         }
       }
     }]
-  }
+  },
+  devtool:"source-map"
 }
 
 function scripts(){

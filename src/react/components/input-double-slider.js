@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import { timingSafeEqual } from 'crypto';
 
 class InputDoubleSlider extends Component{
   
@@ -7,6 +8,7 @@ class InputDoubleSlider extends Component{
     super(props);
 
     this.state = {
+      isDragging: false,
       width:null,
       segments: 24,
       valueHandle1: 2,
@@ -26,13 +28,12 @@ class InputDoubleSlider extends Component{
     const handleSize = (r > 25 ) ? r : 50;
 
     return(
-      <div className="input-double-slider" ref="container">
+      <div className="input-double-slider" ref="container" onMouseUp = {this.handleMouseUp.bind(this)}>
         <svg className="track" width={width} height="75">
           <line className="track-groove" x1="5" y1="25" x2={width-5} y2="25" stroke="white" strokeWidth="6px"/>
         </svg>
-        <svg ref="handle1" onClick={ this.handleClick.bind(this) } width={ handleSize } height={ handleSize }><circle cx={ handleSize/2 } cy={ handleSize/2 } r={ r } fill="lightgrey"/> </svg>
-        <svg ref="handle2" onClick={ this.handleClick.bind(this) } width={ handleSize } height={ handleSize }><circle cx={ handleSize/2 } cy={ handleSize/2 } r={ r }  fill="lightgrey"/> </svg>
-        
+        <svg ref="handle1" width={ handleSize } height={ handleSize }><circle cx={ handleSize/2 } cy={ handleSize/2 } r={ r } fill="lightgrey"/> </svg>
+        <svg ref="handle2" width={ handleSize } height={ handleSize }><circle cx={ handleSize/2 } cy={ handleSize/2 } r={ r }  fill="lightgrey"/> </svg>
       </div>
     )
   }
@@ -81,7 +82,6 @@ class InputDoubleSlider extends Component{
 
     handle1.style.left=`${handle1Spacing}px`;    
     handle2.style.left=`${handle2Spacing}px`;
-
     
   }
 
@@ -118,14 +118,23 @@ class InputDoubleSlider extends Component{
     return horizontalMarks;
   }
 
-  handleClick( event ){
-    console.log( event.target.parentNode );
+  handleMouseDown( event ){
+    this.setState( prevState =>({
+      isDragging: true
+    }))
   }
 
-  // TODO: convert handle value to a spacing
-  valueToSpacing(){
+  handleMouseUp( event ){
+    let mouseX = event.clientX;
+    let handleElement = this.refs.handle1;
+    let handleSize = handleElement.getClientRects()[0];
 
+    // find which handle is closest
+    // lock the mouseX to an interval
+
+    handleElement.style.left = mouseX - handleSize.width/2;
   }
+
 }
 
 export default InputDoubleSlider;

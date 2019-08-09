@@ -1,5 +1,12 @@
 # TODO
 
+## Get slider working
+### Approach
+- Click on the track to move one of the handles
+  - which handle?
+   - the nearest one?
+- List the value of the handle above the handle?
+
 ## Add router
 - [ ] Add react router
 
