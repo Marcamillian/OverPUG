@@ -126,7 +126,12 @@ class InputDoubleSlider extends Component{
 
   handleMouseUp( event ){
     let mouseX = event.clientX;
-    let handleElement = this.refs.handle1;
+    let distanceFromClick = [
+      Math.abs(mouseX - parseInt(this.refs.handle1.style.left)),
+      Math.abs(mouseX - parseInt(this.refs.handle2.style.left))
+    ];
+
+    let handleElement = (distanceFromClick[0] < distanceFromClick[1]) ? this.refs.handle1 : this.refs.handle2 ;
     let handleSize = handleElement.getClientRects()[0];
 
     // find which handle is closest
